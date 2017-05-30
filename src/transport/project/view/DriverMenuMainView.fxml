@@ -11,11 +11,6 @@
                 <fx:include fx:id="driverStatisticTab" source="DriverStatisticTabView.fxml" />
         </content>
     </Tab>
-    <Tab text="Wiadomości">
-    	<content>
-                <fx:include fx:id="driverMessagesTab" source="DriverMessagesTabView.fxml" />
-        </content>
-    </Tab>
     <Tab text="Umowy">
     	<content>
                 <fx:include fx:id="driverContractsTab" source="DriverContractsTabView.fxml" />

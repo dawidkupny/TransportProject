@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverContractsTabController">
+<HBox prefHeight="500.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverContractsTabController">
    <children>
-      <TableView prefHeight="400.0" prefWidth="429.0">
+      <TableView fx:id="contractTable" maxHeight="1.7976931348623157E308" prefHeight="500.0" prefWidth="908.0" HBox.hgrow="NEVER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="numberColumn" prefWidth="22.0" text="#" />
+          <TableColumn fx:id="contractNumberColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Nr umowy" />
+            <TableColumn fx:id="startDateColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Data rozpoczęcia" />
+            <TableColumn fx:id="expirationDateColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Data zakończenia" />
+            <TableColumn fx:id="salaryColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Wynagrodzenie" />
         </columns>
       </TableView>
+      <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="192.0" HBox.hgrow="ALWAYS">
+         <children>
+            <ComboBox fx:id="searchComboBox" maxWidth="1.7976931348623157E308" promptText="Wyszukaj po">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ComboBox>
+            <AnchorPane maxWidth="1.7976931348623157E308">
+               <children>
+                  <TextField fx:id="searchTextField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="192.0" promptText="podaj wartość" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <DatePicker fx:id="datePicker" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="192.0" promptText="podaj datę" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </AnchorPane>
+
+            <Button id="search-button" fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Szukaj" textAlignment="CENTER" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" textAlignment="CENTER" textFill="#e40606">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </HBox>
