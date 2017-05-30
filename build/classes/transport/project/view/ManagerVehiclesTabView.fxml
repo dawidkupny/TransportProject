@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesTabController">
+      <children>
+                  <TableView fx:id="vehiclesTable" layoutX="100.0" layoutY="50.0" prefHeight="700.0" prefWidth="663.0">
+                     <placeholder>
+                     <Label text="Brak danych do wyświetlenia"/>
+                     </placeholder>
+                      <columns>
+                        <TableColumn fx:id="vehicleIdColumn" prefWidth="75.0" text="Id pojazdu" />
+                        <TableColumn fx:id="vehicleRegistrationColumn" prefWidth="100.0" text="Nr rejestracyjny" />
+                        <TableColumn fx:id="vehicleAvailibilityColumn" prefWidth="82.0" text="Dostępny" />
+                        <TableColumn fx:id="vehicleMakeColumn" minWidth="0.0" prefWidth="98.0" text="Marka" />
+                        <TableColumn fx:id="vehicleModelColumn" prefWidth="113.0" text="Model" />
+                        <TableColumn fx:id="vehicleLoadColumn" prefWidth="100.0" text="Ładowność" />
+                        <TableColumn fx:id="vehicleCubatureColumn" prefWidth="100.0" text="Kubatura" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="addVehicleButton" layoutX="800.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="removeVehicleButton" layoutX="800.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="editVehicleButton" layoutX="800.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="searchVehicleButton" layoutX="800.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Label layoutX="950.0" layoutY="156.0" text="DODAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="306.0" text="USUŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="456.0" text="ZMIEŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="606.0" text="SZUKAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+</AnchorPane>

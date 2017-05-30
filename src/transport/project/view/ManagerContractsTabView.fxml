@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerContractsTabController">
+    <children>
+                  <TableView fx:id="contractsTable" layoutX="100.0" layoutY="50.0" prefHeight="700.0" prefWidth="600.0">
+                     <placeholder>
+                     <Label text="Brak danych do wyświetlenia"/>
+                     </placeholder>
+
+                      <columns>
+                        <TableColumn fx:id="contractIdColumn" prefWidth="75.0" text="Id umowy" />
+                        <TableColumn fx:id="contractContractColumn" prefWidth="100.0" text="Umowa" />
+                        <TableColumn fx:id="contractDriverColumn" prefWidth="192.99996948242188" text="Kierowca" />
+                        <TableColumn fx:id="contractStartDayColumn" minWidth="0.0" prefWidth="68.0" text="Początek" />
+                        <TableColumn fx:id="contractExpirationColumn" prefWidth="58.0" text="Koniec" />
+                        <TableColumn fx:id="contractWageColumn" prefWidth="105.0" text="Wynagrodzenie" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="addContractButton" layoutX="800.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="removeContractButton" layoutX="800.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="editContractButton" layoutX="800.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="searchContractButton" layoutX="800.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Label layoutX="950.0" layoutY="156.0" text="DODAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="306.0" text="USUŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="456.0" text="ZMIEŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="950.0" layoutY="606.0" text="SZUKAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverMenuMainController">
+  <tabs>
+    <Tab text="Statystyki">
+    	<content>
+                <fx:include fx:id="driverStatisticTab" source="DriverStatisticTabView.fxml" />
+        </content>
+    </Tab>
+    <Tab text="Wiadomości">
+    	<content>
+                <fx:include fx:id="driverMessagesTab" source="DriverMessagesTabView.fxml" />
+        </content>
+    </Tab>
+    <Tab text="Umowy">
+    	<content>
+                <fx:include fx:id="driverContractsTab" source="DriverContractsTabView.fxml" />
+        </content>
+    </Tab>
+    <Tab text="Kursy">
+    	<content>
+                <fx:include fx:id="driverCoursesTab" source="DriverCoursesTabView.fxml" />
+        </content>
+    </Tab>
+  </tabs>
+</TabPane>

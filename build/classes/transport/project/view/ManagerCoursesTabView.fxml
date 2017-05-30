@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerCoursesTabViewController">
+    <children>
+                  <TableView fx:id="ordersTable" layoutX="12.0" layoutY="50.0" prefHeight="700.0" prefWidth="986.0">
+                    <placeholder>
+                     <Label text="Brak danych do wyświetlenia"/>
+                     </placeholder>
+                      <columns>
+                        <TableColumn fx:id="orderIdColumn" prefWidth="55.000030517578125" text="Id kursu" />
+                        <TableColumn fx:id="orderDistanceColumn" prefWidth="59.000030517578125" text="Dystans" />
+                        <TableColumn fx:id="orderDescritpionColumn" prefWidth="180.0" text="Opis" />
+                        <TableColumn fx:id="orderStartColumn" minWidth="0.0" prefWidth="79.0" text="Początek" />
+                        <TableColumn fx:id="orderDestinationColumn" prefWidth="83.0" text="Cel" />
+                        <TableColumn fx:id="orderLoadColumn" prefWidth="61.0" text="Ładunek" />
+                        <TableColumn fx:id="orderCubatureColumn" prefWidth="70.0" text="Kubatura" />
+                        <TableColumn fx:id="orderVehicleColumn" prefWidth="152.0" text="Pojazd" />
+                        <TableColumn fx:id="orderDriverColumn" prefWidth="152.0" text="Kierowca" />
+                        <TableColumn fx:id="orderIncinerationColumn" prefWidth="92.0" text="Spalanie" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="addOrderButton" layoutX="1050.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="removeOrderButton" layoutX="1050.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="editOrderButton" layoutX="1050.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Button fx:id="searchOrderButton" layoutX="1050.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                  <Label layoutX="1200.0" layoutY="156.0" text="DODAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1200.0" layoutY="306.0" text="USUŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1200.0" layoutY="456.0" text="ZMIEŃ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1200.0" layoutY="606.0" text="SZUKAJ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+</AnchorPane>

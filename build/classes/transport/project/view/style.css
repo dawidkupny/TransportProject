@@ -1,0 +1,7 @@
+
+#search-button {
+	-fx-background-image: url("images/search.png");
+	-fx-background-repeat:no-repeat;
+	-fx-background-position: right;
+	-fx-background-size: 18px;
+}

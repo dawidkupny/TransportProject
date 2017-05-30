@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #77b5fe;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.MainController">
+    <children>
+      <Group fx:id="loginGroup" layoutX="127.0" layoutY="36.0">
+         <children>
+            <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#e3e4e480" height="690.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background: rgba(255, 255, 255, 0.5);" width="1111.0" />
+            <ImageView fitHeight="356.0" fitWidth="683.0" layoutX="218.0" layoutY="64.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/loginImage.jpg" />
+               </image>
+               <effect>
+                  <Glow level="0.48" />
+               </effect>
+            </ImageView>
+            <Label layoutX="253.0" text="FIRMA TRANSPORTOWA" textFill="#434141">
+               <font>
+                  <Font name="Arimo" size="53.0" />
+               </font>
+            </Label>
+            <Label layoutX="373.0" layoutY="426.0" prefHeight="44.0" prefWidth="390.0" text="Zaloguj się, aby kontynuować:">
+               <font>
+                  <Font name="Arimo" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="402.0" layoutY="488.0" text="LOGIN: ">
+               <font>
+                  <Font name="Arimo" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="393.0" layoutY="540.0" text="HASŁO:">
+               <font>
+                  <Font name="Arimo" size="28.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f5faff86" height="250.0" layoutX="359.0" layoutY="430.0" stroke="TRANSPARENT" strokeType="INSIDE" width="418.0" />
+            <TextField fx:id="loginField" layoutX="521.0" layoutY="482.0" prefHeight="41.0" prefWidth="211.0" />
+            <PasswordField fx:id="passwordField" layoutX="521.0" layoutY="534.0" prefHeight="41.0" prefWidth="211.0" />
+            <Button fx:id="loginButton" layoutX="473.0" layoutY="602.0" mnemonicParsing="false" onAction="#login" prefHeight="47.0" prefWidth="195.0" text="Zaloguj" textFill="#434141">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
+         </children>
+      </Group>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+    </children>
+</AnchorPane>
