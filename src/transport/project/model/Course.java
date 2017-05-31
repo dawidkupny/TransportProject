@@ -12,6 +12,8 @@ public class Course {
 	private String description;
 	private BigDecimal incineration;
 	private String brand;
+        private String vehicleToString;
+        private String driverToString;
 
 	public Integer getNumber() {
 		return number;
@@ -85,15 +87,37 @@ public class Course {
 		this.brand = brand;
 	}
 
-	public Course(Integer number, BigDecimal distance, String startingPoint, String destination, BigDecimal loadWeight, BigDecimal cubature, String description, BigDecimal incineration, String brand) {
-		this.number = number;
-		this.distance = distance;
-		this.startingPoint = startingPoint;
-		this.destination = destination;
-		this.loadWeight = loadWeight;
-		this.cubature = cubature;
-		this.description = description;
-		this.incineration = incineration;
-		this.brand = brand;
-	}
+        public String getVehicleToString() {
+                return vehicleToString;
+        }
+
+        public void setVehicleToString(String vehicleToString) {
+                this.vehicleToString = vehicleToString;
+        }
+
+        public String getDriverToString() {
+                return driverToString;
+        }
+
+        public void setDriverToString(String driverToString) {
+                this.driverToString = driverToString;
+        }
+
+    public Course(Integer number, BigDecimal distance, String startingPoint, String destination, BigDecimal loadWeight, BigDecimal cubature, String description, BigDecimal incineration, String brand, String vehicleToString, String driverToString) {
+        this.number = number;
+        this.distance = distance;
+        this.startingPoint = startingPoint;
+        this.destination = destination;
+        this.loadWeight = loadWeight;
+        this.cubature = cubature;
+        this.description = description;
+        this.incineration = incineration;
+        this.brand = brand;
+        this.vehicleToString = vehicleToString;
+        this.driverToString = driverToString;
+    }
+
+        
+        
+	
 }
