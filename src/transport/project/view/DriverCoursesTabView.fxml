@@ -7,40 +7,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<HBox prefHeight="500.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverCoursesTabController">
+<HBox prefHeight="500.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverCoursesTabController">
    <children>
-      <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" prefHeight="500.0" prefWidth="908.0" HBox.hgrow="NEVER">
+      <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="500.0" prefWidth="1195.0" HBox.hgrow="NEVER">
         <columns>
           <TableColumn fx:id="numberColumn" prefWidth="22.0" text="#" />
           <TableColumn fx:id="distanceColumn" maxWidth="1.7976931348623157E308" prefWidth="83.0" text="Dystans (km)" />
             <TableColumn fx:id="startingPointColumn" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Miejsce początkowe" />
-            <TableColumn fx:id="destinationColumn" maxWidth="1.7976931348623157E308" prefWidth="118.0" text="Miejsce docelowe" />
-            <TableColumn fx:id="loadWeightColumn" maxWidth="1.7976931348623157E308" prefWidth="112.0" text="Masa ładunku (kg)" />
-            <TableColumn fx:id="cubatureColumn" maxWidth="1.7976931348623157E308" prefWidth="133.0" text="Rozmiar naczepy (m3)" />
-            <TableColumn fx:id="incinerationColumn" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Il. zużyt. benzyny (l)" />
-            <TableColumn fx:id="courseDescriptionColumn" maxWidth="1.7976931348623157E308" prefWidth="117.0" text="Opis kursu" />
-            <TableColumn fx:id="vehicleColumn" maxWidth="1.7976931348623157E308" minWidth="9.0" prefWidth="83.0" text="Ciężarówka" />
+            <TableColumn fx:id="destinationColumn" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Miejsce docelowe" />
+            <TableColumn fx:id="startDateColumn" maxWidth="1.7976931348623157E308" prefWidth="105.0" text="Data rozpoczęcia" />
+            <TableColumn fx:id="endDateColumn" maxWidth="1.7976931348623157E308" prefWidth="105.0" text="Data zakończenia" />
+            <TableColumn fx:id="loadWeightColumn" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="Masa ładunku (kg)" />
+            <TableColumn fx:id="cubatureColumn" maxWidth="1.7976931348623157E308" prefWidth="132.0" text="Rozmiar naczepy (m3)" />
+            <TableColumn fx:id="incinerationColumn" maxWidth="1.7976931348623157E308" prefWidth="118.0" text="Il. zużyt. benzyny (l)" />
+            <TableColumn fx:id="driverColumn" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Kierowca" />
+            <TableColumn fx:id="vehicleColumn" maxWidth="1.7976931348623157E308" minWidth="9.0" prefWidth="155.0" text="Ciężarówka" />
         </columns>
       </TableView>
-      <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="192.0" HBox.hgrow="ALWAYS">
+      <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
          <children>
             <ComboBox fx:id="searchComboBox" maxWidth="1.7976931348623157E308" promptText="Wyszukaj po">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="searchTextField" maxWidth="1.7976931348623157E308" promptText="podaj wartość">
+            <AnchorPane maxWidth="1.7976931348623157E308">
+               <children>
+                  <TextField fx:id="searchTextField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="192.0" promptText="podaj wartość" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <DatePicker fx:id="datePicker" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="192.0" promptText="podaj datę" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-            </TextField>
+            </AnchorPane>
 
             <Button id="search-button" fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Szukaj" textAlignment="CENTER" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" textAlignment="CENTER" textFill="#e40606">
+            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="150.0" textAlignment="CENTER" textFill="#e40606" wrapText="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>

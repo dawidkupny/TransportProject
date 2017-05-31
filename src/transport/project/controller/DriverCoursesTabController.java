@@ -2,10 +2,13 @@ package transport.project.controller;
 
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,8 +28,12 @@ import transport.project.util.DatabaseToolkit;
 
 public class DriverCoursesTabController implements Initializable {
 
-	private static final String ALL_RESULT = "SELECT o.distance, o.starting_point, o.destination, o.load_weight, o.cubature, o.description, o.incineration, v.brand FROM transport.order o JOIN transport.vehicle v WHERE v.registration_id = o.vehicle_registration_id";
-
+	private static final String ALL_RESULT = "SELECT o.distance, o.starting_point, o.destination, o.start_date, o.end_date, o.load_weight, o.cubature, o.incineration, " +
+							"v.registration_number, v.brand, v.model, " +
+                            "d.first_name, d.last_name " +
+                            "FROM transport.order o " +
+                            "JOIN transport.vehicle v ON (o.vehicle_registration_id = v.registration_id) " +
+                            "JOIN transport.driver d ON (o.driver_driver_id = d.driver_id)";
 	@FXML
     private TableView<Course> courseTable;
 
@@ -48,7 +56,13 @@ public class DriverCoursesTabController implements Initializable {
     private TableColumn<Course, String> destinationColumn;
 
     @FXML
-    private TableColumn<Course, String> courseDescriptionColumn;
+    private TableColumn<Course, Date> startDateColumn;
+
+    @FXML
+    private TableColumn<Course, Date> endDateColumn;
+
+    @FXML
+    private TableColumn<Course, String> driverColumn;
 
     @FXML
     private TextField searchTextField;
@@ -66,6 +80,9 @@ public class DriverCoursesTabController implements Initializable {
     private TableColumn<Course, String> startingPointColumn;
 
     @FXML
+    private DatePicker datePicker;
+
+    @FXML
     private Label warningLabel;
 
     DatabaseToolkit dbToolkit = DatabaseToolkit.getInstance();
@@ -77,17 +94,32 @@ public class DriverCoursesTabController implements Initializable {
 			"Dystans",
 			"Miejsce początkowe",
 			"Miejsce docelowe",
+			"Data rozpoczęcia",
+			"Data zakończenia",
 			"Masa ładunku",
 			"Rozmiar naczepy",
 			"Il. zużyt. benzyny",
-			"Ciężarówka");
+			"Nr rejestracyjny");
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//dbToolkit.connect();
 		dataBaseSearch(ALL_RESULT);
 		searchComboBox.setItems(criteria);
+
+		searchComboBox.valueProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				String parameter = searchComboBox.getSelectionModel().getSelectedItem();
+				if(parameter.equals("Data rozpoczęcia") || parameter.equals("Data zakończenia")) {
+					datePicker.setVisible(true);
+					searchTextField.setVisible(false);
+				} else {
+					datePicker.setVisible(false);
+					searchTextField.setVisible(true);
+				}
+			}
+		});
 
 		searchButton.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -96,7 +128,7 @@ public class DriverCoursesTabController implements Initializable {
 				data.clear();
 				try {
 					String parameter = searchByCriteria(searchComboBox.getValue());
-					String userValue = searchTextField.getText();
+					String userValue = (datePicker.isVisible()) ? datePicker.getValue().toString() : searchTextField.getText();
 					if(userValue.equals("")) {
 						warningLabel.setText("Uzupelnij brakujace pola.");
 					} else
@@ -137,11 +169,15 @@ public class DriverCoursesTabController implements Initializable {
 						resultSet.getBigDecimal("distance"),
 						resultSet.getString("starting_point"),
 						resultSet.getString("destination"),
+						resultSet.getDate("start_date"),
+						resultSet.getDate("end_date"),
 						resultSet.getBigDecimal("load_weight"),
 						resultSet.getBigDecimal("cubature"),
-						resultSet.getString("description"),
 						resultSet.getBigDecimal("incineration"),
-						resultSet.getString("brand")
+						(resultSet.getString("v.registration_number") + " : " + (resultSet.getString("v.brand"))
+                                + " " + (resultSet.getString("v.model"))),
+                        (resultSet.getString("d.first_name")
+                                + " " + resultSet.getString("d.last_name"))
 						));
 			}
 		} catch (SQLException e) {
@@ -151,11 +187,13 @@ public class DriverCoursesTabController implements Initializable {
 		distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
 		startingPointColumn.setCellValueFactory(new PropertyValueFactory<>("startingPoint"));
 		destinationColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
+		startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+		endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
 		loadWeightColumn.setCellValueFactory(new PropertyValueFactory<>("loadWeight"));
 		cubatureColumn.setCellValueFactory(new PropertyValueFactory<>("cubature"));
-		courseDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 		incinerationColumn.setCellValueFactory(new PropertyValueFactory<>("incineration"));
-		vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+		driverColumn.setCellValueFactory(new PropertyValueFactory<>("driverToString"));
+		vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleToString"));
 
 		return data;
 	}
@@ -172,6 +210,12 @@ public class DriverCoursesTabController implements Initializable {
 		case "Miejsce docelowe":
 			parameter = "o.destination";
 			break;
+		case "Data rozpoczęcia":
+			parameter = "o.start_date";
+			break;
+		case "Data zakończenia":
+			parameter = "o.end_date";
+			break;
 		case "Masa ładunku":
 			parameter = "o.load_weight";
 			break;
@@ -181,8 +225,8 @@ public class DriverCoursesTabController implements Initializable {
 		case "Il. zużyt. benzyny":
 			parameter = "o.incineration";
 			break;
-		case "Ciężarówka":
-			parameter = "v.brand";
+		case "Nr rejestracyjny":
+			parameter = "v.registration_number";
 			break;
 		}
 			return parameter;

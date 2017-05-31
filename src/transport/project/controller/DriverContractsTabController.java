@@ -101,7 +101,6 @@ public class DriverContractsTabController implements Initializable{
 				try {
 					String parameter = searchByCriteria(searchComboBox.getValue());
 					String userValue = (datePicker.isVisible()) ? datePicker.getValue().toString() : searchTextField.getText();
-					System.out.println(userValue);
 					if(userValue.equals("")) {
 						warningLabel.setText("Uzupelnij brakujace pola.");
 					} else
@@ -142,7 +141,7 @@ public class DriverContractsTabController implements Initializable{
 						resultSet.getString("contract_number"),
 						resultSet.getDate("start_date"),
 						resultSet.getDate("expiration_date"),
-						resultSet.getBigDecimal("salary")
+						resultSet.getBigDecimal("salary"),""
 						));
 			}
 		} catch (SQLException e) {

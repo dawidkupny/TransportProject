@@ -18,7 +18,7 @@ import transport.project.model.Course;
 import transport.project.util.DatabaseToolkit;
 
 public class ManagerCoursesTabController implements Initializable {
-    final String ALL_DATA = "SELECT c.distance, c.starting_point, c.destination, c.load_weight, c.cubature, c.incineration, " +
+    final String ALL_DATA = "SELECT c.distance, c.starting_point, c.destination, c.start_date, c.end_date, c.load_weight, c.cubature, c.incineration, " +
                             " v.registration_number, v.brand, v.model, " +
                             " d.driver_id, d.first_name, d.last_name " +
                             "FROM transport.`order` c " +
@@ -27,37 +27,37 @@ public class ManagerCoursesTabController implements Initializable {
 
     @FXML
     private TableView ordersTable;
-    
+
     @FXML
     private TableColumn orderIdColumn;
-     
+
     @FXML
-    private TableColumn orderDistanceColumn; 
-    
+    private TableColumn orderDistanceColumn;
+
     @FXML
-    private TableColumn orderStartColumn; 
-    
+    private TableColumn orderStartColumn;
+
     @FXML
-    private TableColumn orderDestinationColumn; 
-    
+    private TableColumn orderDestinationColumn;
+
     @FXML
-    private TableColumn orderLoadColumn; 
-    
+    private TableColumn orderLoadColumn;
+
     @FXML
     private TableColumn orderCubatureColumn;
-    
+
     @FXML
     private TableColumn orderVehicleColumn;
-    
+
     @FXML
     private TableColumn orderDriverColumn;
-    
+
     @FXML
     private TableColumn orderIncinerationColumn;
-    
+
     private DatabaseToolkit databaseToolkit;
-    
-    
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
@@ -69,33 +69,33 @@ public class ManagerCoursesTabController implements Initializable {
       orderVehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleToString"));
       orderDriverColumn.setCellValueFactory(new PropertyValueFactory<>("driverToString"));
       orderIncinerationColumn.setCellValueFactory(new PropertyValueFactory<>("incineration"));
-     
+
       databaseToolkit = DatabaseToolkit.getInstance();
-        
+
       ordersTable.setItems(searchData(ALL_DATA));
-    
-        
-    }   
-    
+
+
+    }
+
     public ObservableList<Course> searchData(String query) {
          ObservableList<Course> observableList = FXCollections.observableArrayList();
         try {
             ResultSet resultSet = databaseToolkit.executeQuery(query);
-          
+
             int counter=0;
             while(resultSet.next()) {
                 observableList.add(new Course(++counter,
                         resultSet.getBigDecimal("c.distance"),
                         resultSet.getString("c.starting_point"),
                         resultSet.getString("c.destination"),
+                        resultSet.getDate("c.start_date"),
+                        resultSet.getDate("c.end_date"),
                         resultSet.getBigDecimal("c.load_weight"),
                         resultSet.getBigDecimal("c.cubature"),
-                        "", //unnecessary course's description
                         resultSet.getBigDecimal("c.incineration"),
-                        "", //Dawid's brand
                         (resultSet.getString("v.registration_number") + ": " + (resultSet.getString("v.brand"))
                                 + " " + (resultSet.getString("v.model"))),
-                        (resultSet.getInt("d.driver_id") + ": " + resultSet.getString("d.first_name") 
+                        (resultSet.getInt("d.driver_id") + ": " + resultSet.getString("d.first_name")
                                 + " " + resultSet.getString("d.last_name"))
                 ));
             }
@@ -104,5 +104,5 @@ public class ManagerCoursesTabController implements Initializable {
         }
         return observableList;
     }
-    
+
 }

@@ -63,7 +63,7 @@ public class Contract {
 	public Contract(Integer number, String contractNumber, Date startDate, Date expirationDate, BigDecimal salary, String driverToString) {
 		this.number = number;
 		this.contractNumber = contractNumber;
-                this.driverToString = driverToString;
+        this.driverToString = driverToString;
 		this.startDate = startDate;
 		this.expirationDate = expirationDate;
 		this.salary = salary;

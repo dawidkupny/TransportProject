@@ -9,16 +9,16 @@
 
 <HBox prefHeight="500.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverContractsTabController">
    <children>
-      <TableView fx:id="contractTable" maxHeight="1.7976931348623157E308" prefHeight="500.0" prefWidth="908.0" HBox.hgrow="NEVER">
+      <TableView fx:id="contractTable" maxHeight="1.7976931348623157E308" prefHeight="500.0" prefWidth="950.0" HBox.hgrow="NEVER">
         <columns>
           <TableColumn fx:id="numberColumn" prefWidth="22.0" text="#" />
-          <TableColumn fx:id="contractNumberColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Nr umowy" />
-            <TableColumn fx:id="startDateColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Data rozpoczęcia" />
-            <TableColumn fx:id="expirationDateColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Data zakończenia" />
-            <TableColumn fx:id="salaryColumn" maxWidth="1.7976931348623157E308" prefWidth="221.0" text="Wynagrodzenie" />
+          <TableColumn fx:id="contractNumberColumn" maxWidth="1.7976931348623157E308" prefWidth="232.0" text="Nr umowy" />
+            <TableColumn fx:id="startDateColumn" maxWidth="1.7976931348623157E308" prefWidth="232.0" text="Data rozpoczęcia" />
+            <TableColumn fx:id="expirationDateColumn" maxWidth="1.7976931348623157E308" prefWidth="232.0" text="Data zakończenia" />
+            <TableColumn fx:id="salaryColumn" maxWidth="1.7976931348623157E308" prefWidth="232.0" text="Wynagrodzenie" />
         </columns>
       </TableView>
-      <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="192.0" HBox.hgrow="ALWAYS">
+      <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
          <children>
             <ComboBox fx:id="searchComboBox" maxWidth="1.7976931348623157E308" promptText="Wyszukaj po">
                <VBox.margin>
@@ -40,7 +40,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" textAlignment="CENTER" textFill="#e40606">
+            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" textAlignment="CENTER" textFill="#e40606" wrapText="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>

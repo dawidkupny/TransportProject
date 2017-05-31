@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
 public class DriverMenuMainController implements Initializable{
 
@@ -23,12 +22,6 @@ public class DriverMenuMainController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Label idLabel = driverStatisticTabController.getIdLabel();
-
-		idLabel.setText("2");
-
-		driverStatisticTabController.setValues("Andrzej", "Nowak");
-
 	}
 
 }

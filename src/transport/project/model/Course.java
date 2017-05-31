@@ -1,19 +1,20 @@
 package transport.project.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Course {
 	private Integer number;
 	private BigDecimal distance;
 	private String startingPoint;
 	private String destination;
+	private Date startDate;
+	private Date endDate;
 	private BigDecimal loadWeight;
 	private BigDecimal cubature;
-	private String description;
 	private BigDecimal incineration;
-	private String brand;
-        private String vehicleToString;
-        private String driverToString;
+    private String vehicleToString;
+    private String driverToString;
 
 	public Integer getNumber() {
 		return number;
@@ -63,14 +64,6 @@ public class Course {
 		this.cubature = cubature;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public BigDecimal getIncineration() {
 		return incineration;
 	}
@@ -79,45 +72,49 @@ public class Course {
 		this.incineration = incineration;
 	}
 
-	public String getBrand() {
-		return brand;
+    public String getVehicleToString() {
+            return vehicleToString;
+    }
+
+    public void setVehicleToString(String vehicleToString) {
+            this.vehicleToString = vehicleToString;
+    }
+
+    public String getDriverToString() {
+            return driverToString;
+    }
+
+    public void setDriverToString(String driverToString) {
+            this.driverToString = driverToString;
+    }
+
+    public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-        public String getVehicleToString() {
-                return vehicleToString;
-        }
+	public Date getEndDate() {
+		return endDate;
+	}
 
-        public void setVehicleToString(String vehicleToString) {
-                this.vehicleToString = vehicleToString;
-        }
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-        public String getDriverToString() {
-                return driverToString;
-        }
-
-        public void setDriverToString(String driverToString) {
-                this.driverToString = driverToString;
-        }
-
-    public Course(Integer number, BigDecimal distance, String startingPoint, String destination, BigDecimal loadWeight, BigDecimal cubature, String description, BigDecimal incineration, String brand, String vehicleToString, String driverToString) {
+	public Course(Integer number, BigDecimal distance, String startingPoint, String destination, Date startDate, Date endDate, BigDecimal loadWeight, BigDecimal cubature, BigDecimal incineration, String vehicleToString, String driverToString) {
         this.number = number;
         this.distance = distance;
         this.startingPoint = startingPoint;
         this.destination = destination;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.loadWeight = loadWeight;
         this.cubature = cubature;
-        this.description = description;
         this.incineration = incineration;
-        this.brand = brand;
         this.vehicleToString = vehicleToString;
         this.driverToString = driverToString;
     }
-
-        
-        
-	
 }
