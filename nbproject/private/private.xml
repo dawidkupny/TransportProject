@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Mariusz/Documents/NetBeansProjects/TransportProject/src/transport/project/util/DatabaseToolkit.java</file>
+            <file>file:/D:/Mariusz/Documents/NetBeansProjects/TransportProject/src/transport/project/controller/ManagerCoursesTabController.java</file>
+            <file>file:/D:/Mariusz/Documents/NetBeansProjects/TransportProject/src/transport/project/controller/ManagerVehiclesTabController.java</file>
+            <file>file:/D:/Mariusz/Documents/NetBeansProjects/TransportProject/src/transport/project/view/ManagerVehiclesTabView.fxml</file>
         </group>
     </open-files>
 </project-private>

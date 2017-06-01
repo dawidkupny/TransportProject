@@ -12,7 +12,7 @@
       <children>
       <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-                        <TableView fx:id="vehiclesTable" prefHeight="768.0" prefWidth="900.0">
+                        <TableView fx:id="vehiclesTable" prefHeight="768.0" prefWidth="950.0">
                            <placeholder>
                            <Label text="Brak danych do wyświetlenia" />
                            </placeholder>
@@ -20,16 +20,16 @@
                               <TableColumn fx:id="vehicleIdColumn" prefWidth="49.999969482421875" text="#" />
                               <TableColumn fx:id="vehicleRegistrationColumn" prefWidth="132.0" text="Nr rejestracyjny" />
                               <TableColumn fx:id="vehicleAvailibilityColumn" prefWidth="116.0" text="Dostępny" />
-                              <TableColumn fx:id="vehicleBrandColumn" minWidth="0.0" prefWidth="140.0" text="Marka" />
-                              <TableColumn fx:id="vehicleModelColumn" prefWidth="160.0" text="Model" />
-                              <TableColumn fx:id="vehicleLoadColumn" prefWidth="108.0" text="Ładowność (kg)" />
-                              <TableColumn fx:id="vehicleCubatureColumn" prefWidth="152.0" text="Rozmiar naczepy (m3)" />
+                              <TableColumn fx:id="vehicleBrandColumn" minWidth="0.0" prefWidth="168.0" text="Marka" />
+                              <TableColumn fx:id="vehicleModelColumn" prefWidth="164.0" text="Model" />
+                              <TableColumn fx:id="vehicleLoadColumn" prefWidth="115.0" text="Ładowność (kg)" />
+                              <TableColumn fx:id="vehicleCubatureColumn" prefWidth="145.0" text="Rozmiar naczepy (m3)" />
                            </columns>
                         </TableView>
-            <AnchorPane prefHeight="200.0" prefWidth="470.0">
+            <AnchorPane prefHeight="200.0" prefWidth="420.0">
                <children>
-                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
-                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" />
                               <Button fx:id="editButton" layoutX="70.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                               <Button fx:id="searchButton" layoutX="70.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                               <Label layoutX="230.0" layoutY="161.0" text="DODAJ">

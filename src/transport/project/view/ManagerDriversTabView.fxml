@@ -12,26 +12,26 @@
     <children>
       <HBox prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-                        <TableView fx:id="driversTable" prefHeight="768.0" prefWidth="900.0">
+                        <TableView fx:id="driversTable" prefHeight="768.0" prefWidth="950.0">
                            <placeholder>
                            <Label text="Brak danych do wyświetlenia" />
                            </placeholder>
                             <columns>
                             <TableColumn fx:id="driverIdColumn" prefWidth="150.0" text="Identyfikator" />
                             <TableColumn fx:id="driverFirstNameColumn" minWidth="250.0" prefWidth="250.0" text="Imię" />
-                              <TableColumn fx:id="driverLastNameColumn" prefWidth="250.0" text="Nazwisko" />
-                              <TableColumn fx:id="driverHireDateColumn" minWidth="1.0" prefWidth="250.0" text="Data zatrudnienia" />
+                              <TableColumn fx:id="driverLastNameColumn" prefWidth="297.0" text="Nazwisko" />
+                              <TableColumn fx:id="driverHireDateColumn" minWidth="1.0" prefWidth="246.0" text="Data zatrudnienia" />
                           </columns>
                         </TableView>
-            <AnchorPane prefHeight="768.0" prefWidth="470.0">
+            <AnchorPane prefHeight="768.0" prefWidth="420.0">
                <children>
-                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" />
                               <Label layoutX="230.0" layoutY="161.0" text="DODAJ">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" />
                               <Label layoutX="230.0" layoutY="299.0" text="USUŃ">
                                  <font>
                                     <Font size="26.0" />

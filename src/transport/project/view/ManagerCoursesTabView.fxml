@@ -12,26 +12,28 @@
     <children>
       <HBox prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-                        <TableView fx:id="ordersTable" prefHeight="700.0" prefWidth="900.0">
+                        <TableView fx:id="ordersTable" prefHeight="700.0" prefWidth="950.0">
                           <placeholder>
                            <Label text="Brak danych do wyświetlenia" />
                            </placeholder>
                             <columns>
                               <TableColumn fx:id="orderIdColumn" prefWidth="20.0" text="#" />
-                              <TableColumn fx:id="orderDistanceColumn" text="Dystans (km)" />
-                              <TableColumn fx:id="orderStartColumn" minWidth="0.0" prefWidth="105.0" text="Miejsce początk." />
-                              <TableColumn fx:id="orderDestinationColumn" prefWidth="105.0" text="Miejsce docelowe" />
-                              <TableColumn fx:id="orderLoadColumn" prefWidth="105.0" text="Masa ład. (kg)" />
-                              <TableColumn fx:id="orderCubatureColumn" prefWidth="115.0" text="Roz. naczepy (m3)" />
-                              <TableColumn fx:id="orderVehicleColumn" prefWidth="170.0" text="Pojazd" />
-                              <TableColumn fx:id="orderDriverColumn" prefWidth="200.0" text="Kierowca" />
-                              <TableColumn fx:id="orderIncinerationColumn" prefWidth="60.0" text="Spalanie" />
+                              <TableColumn fx:id="orderDistanceColumn" prefWidth="70.00003051757812" text="Dystans" />
+                              <TableColumn fx:id="orderStartColumn" minWidth="0.0" prefWidth="86.99996948242188" text="Start" />
+                              <TableColumn fx:id="orderDestinationColumn" prefWidth="88.0" text="Cel" />
+                  <TableColumn fx:id="orderStartDateColumn" minWidth="0.0" prefWidth="87.0" text="Data wyjazdu" />
+                  <TableColumn fx:id="orderEndDateColumn" prefWidth="86.0" text="Data powrotu" />
+                              <TableColumn fx:id="orderLoadColumn" prefWidth="60.0" text="Masa[kg]" />
+                              <TableColumn fx:id="orderCubatureColumn" prefWidth="55.0" text="Naczepa" />
+                              <TableColumn fx:id="orderVehicleColumn" prefWidth="158.0" text="Pojazd" />
+                              <TableColumn fx:id="orderDriverColumn" prefWidth="115.0" text="Kierowca" />
+                              <TableColumn fx:id="orderIncinerationColumn" prefWidth="82.0" text="Spalanie" />
                            </columns>
                         </TableView>
-            <AnchorPane prefHeight="200.0" prefWidth="466.0">
+            <AnchorPane prefHeight="200.0" prefWidth="420.0">
                <children>
-                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
-                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" />
                               <Button fx:id="editButton" layoutX="70.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                               <Button fx:id="searchButton" layoutX="70.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                               <Label layoutX="230.0" layoutY="161.0" text="DODAJ">

@@ -6,12 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Mariusz Krzyżowski
- * @author Dawid Kupny
- * @author Kamil Zemczak
- */
 public class TransportProject extends Application {
     
     @Override

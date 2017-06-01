@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerContractsTabEditController">
+   <children>
+      <Label layoutX="57.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE UMOWY" textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="60.0" text="Numer umowy:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="contractField" layoutX="200.0" layoutY="55.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="25.0" layoutY="100.0" text="Data początku umowy:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="140.0" text="Data końca umowy:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="startDateField" layoutX="200.0" layoutY="95.0" prefHeight="25.0" prefWidth="182.0" />
+      <DatePicker fx:id="endDateField" layoutX="200.0" layoutY="135.0" prefHeight="25.0" prefWidth="182.0" />
+      <TextField fx:id="salaryField" layoutX="200.0" layoutY="175.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="25.0" layoutY="180.0" text="Wynagrodzenie:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="175.0" text="[zł]" />
+      <Label layoutX="25.0" layoutY="220.0" text="Kierowca:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="driverField" layoutX="200.0" layoutY="215.0" prefHeight="25.0" prefWidth="182.0" />
+      <Button layoutX="153.0" layoutY="263.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ UMOWĘ" />
+   </children>
+</AnchorPane>
