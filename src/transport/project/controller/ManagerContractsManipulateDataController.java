@@ -19,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import transport.project.model.Contract;
-import transport.project.model.Course;
 import transport.project.util.DatabaseToolkit;
 import transport.project.util.ValuesChecker;
 
@@ -175,14 +174,12 @@ public class ManagerContractsManipulateDataController implements Initializable {
                }   
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
           alert.setTitle("Wyniki wyszukiwania");
-          alert.setHeaderText("Na podsawie Twoich warunków wyszukano następujące pozycje: ");
+          alert.setHeaderText("Na podstawie Twoich warunków wyszukano następujące pozycje: ");
           alert.setContentText(formattedResult.toString());
 
         alert.showAndWait();
         } catch (SQLException ex) {
             Logger.getLogger(ManagerVehiclesManipulateDataController.class.getName()).log(Level.SEVERE, null, ex);
-            
-        
         }
     }
 }

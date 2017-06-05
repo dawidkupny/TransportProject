@@ -14,14 +14,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import transport.project.model.Driver;
+import transport.project.model.Vehicle;
 import transport.project.util.DatabaseToolkit;
 
 public class ManagerDriversTabController implements Initializable {
@@ -43,6 +45,10 @@ public class ManagerDriversTabController implements Initializable {
     private TableColumn driverHireDateColumn;
     
     private DatabaseToolkit databaseToolkit;
+    
+    private final int INSERT = 1; 
+    private final int UPDATE = 2; 
+    private final int SELECT = 3; 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
@@ -72,6 +78,28 @@ public class ManagerDriversTabController implements Initializable {
             Logger.getLogger(ManagerDriversTabController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return observableList;
+    }
+    
+     private void openWindow(int state, Driver driver) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/transport/project/view/ManagerDriversManipulateDataView.fxml"));
+            
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene((Pane) loader.load()));
+            
+            ManagerDriversManipulateDataController controller =
+                    loader.<ManagerDriversManipulateDataController>getController();
+            if(state==UPDATE) controller.initState(state,driver);
+            else controller.initState(state);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerVehiclesTabController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void add() {
+        openWindow(INSERT,null);
     }
     
     @FXML
@@ -105,24 +133,35 @@ public class ManagerDriversTabController implements Initializable {
         return optional.get();
         }
     
-     @FXML
-    public void add() {
-        openWindow("/transport/project/view/ManagerDriversTabEditView.fxml");
-        driversTable.setItems(searchData(ALL_DATA));
+    @FXML
+    public void update() {
+        String driverId = showUpdateDialog();
+        if(!driverId.equals(""))
+        openWindow(UPDATE,searchData("SELECT * FROM `driver` WHERE driver_id="+driverId+";").get(0));
     }
-
-    private void openWindow(String resource) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(resource));
-            Scene scene = new Scene(root);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerCoursesTabController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+      public String showUpdateDialog() {
+        ArrayList<String> choices = new ArrayList();
+        searchData(ALL_DATA).forEach(x -> choices.add(x.getNumber()+": " 
+                +x.getFirstName()+" "+x.getLastName()));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("",choices);
+        dialog.setTitle("Edytowanie kierowcy");
+        dialog.setHeaderText("Aby edytować dane kierowcy w systemie, wybierz go z poniższej listy. \n");
+        dialog.setContentText("Kierowca do modyfikacji: ");
+        Optional<String> optional = dialog.showAndWait();
+        return optional.get().split(":")[0];
     }
+      
+    @FXML
+    public void select() {
+        openWindow(SELECT,null);
+    }  
+    
+    @FXML
+    public void refresh() {
+        driversTable.setItems(searchData(ALL_DATA));   
+    }  
+    
 
 }
 

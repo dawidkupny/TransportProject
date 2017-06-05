@@ -124,7 +124,6 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
         DatabaseToolkit.getInstance().executeUpdate(query);
         Stage stage = (Stage) loadField.getScene().getWindow();
         stage.close();
-        
     }
 
     private void selectVehicle() {
@@ -160,17 +159,14 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
                         resultSet.getBigDecimal("cubature").setScale(2).toPlainString()
                 ));
                }   
-          System.out.println(formattedResult.toString());
           Alert alert = new Alert(AlertType.INFORMATION);
           alert.setTitle("Wyniki wyszukiwania");
-          alert.setHeaderText("Na podsawie Twoich warunków wyszukano następujące pozycje: ");
+          alert.setHeaderText("Na podstawie Twoich warunków wyszukano następujące pozycje: ");
           alert.setContentText(formattedResult.toString());
 
-        alert.showAndWait();
+          alert.showAndWait();
         } catch (SQLException ex) {
             Logger.getLogger(ManagerVehiclesManipulateDataController.class.getName()).log(Level.SEVERE, null, ex);
-            
-        
         }
     }
 }

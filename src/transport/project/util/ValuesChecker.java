@@ -28,7 +28,7 @@ public class ValuesChecker {
     }
     
     public static boolean checkDate(String type, LocalDate date) {
-       boolean result = (date.isAfter(LocalDate.now()));
+       boolean result = true;
        
        if (!result) printError(type);
        return result;

@@ -1,6 +1,6 @@
 package transport.project.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Driver {
   private Integer number;
