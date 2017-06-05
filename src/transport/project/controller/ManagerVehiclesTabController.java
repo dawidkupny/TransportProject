@@ -14,13 +14,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import transport.project.model.Vehicle;
 import transport.project.util.DatabaseToolkit;
 
@@ -53,6 +54,10 @@ public class ManagerVehiclesTabController implements Initializable {
     private TableColumn vehicleCubatureColumn;
     
     private DatabaseToolkit databaseToolkit;
+    
+    private final int INSERT = 1; 
+    private final int UPDATE = 2; 
+    private final int SELECT = 3; 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,9 +71,7 @@ public class ManagerVehiclesTabController implements Initializable {
       
       databaseToolkit = DatabaseToolkit.getInstance();
         
-      vehiclesTable.setItems(searchData(ALL_DATA));
-    
-        
+      vehiclesTable.setItems(searchData(ALL_DATA));   
     }    
 
     private ObservableList<Vehicle> searchData(String query) {
@@ -93,6 +96,28 @@ public class ManagerVehiclesTabController implements Initializable {
         return observableList;
     }
     
+    private void openWindow(int state, Vehicle vehicle) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/transport/project/view/ManagerVehiclesManipulateDataView.fxml"));
+            
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene((Pane) loader.load()));
+            
+            ManagerVehiclesManipulateDataController controller =
+                    loader.<ManagerVehiclesManipulateDataController>getController();
+            if(state==UPDATE) controller.initState(state,vehicle);
+            else controller.initState(state);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerVehiclesTabController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void add() {
+        openWindow(INSERT,null);
+    }
+    
     @FXML
     public void remove() {
        String contractToRemove = showRemoveDialog().split(":")[0];
@@ -102,7 +127,7 @@ public class ManagerVehiclesTabController implements Initializable {
        }
     }
     
-    public String showRemoveDialog() {
+      public String showRemoveDialog() {
         ArrayList<String> choices = new ArrayList();
         searchData(ALL_DATA).forEach(x -> choices.add(x.getRegistrationNumber() + ": "
                 +x.getBrand()+ " " + x.getModel()));
@@ -116,21 +141,31 @@ public class ManagerVehiclesTabController implements Initializable {
         }
     
     @FXML
-    public void add() {
-        openWindow("/transport/project/view/ManagerVehiclesTabEditView.fxml");
-        vehiclesTable.setItems(searchData(ALL_DATA));
+    public void update() {
+        String registration = showUpdateDialog();
+        if(!registration.equals(""))
+        openWindow(UPDATE,searchData("SELECT * FROM `vehicle` WHERE registration_number=\""+registration+"\";").get(0));
     }
-
-    private void openWindow(String resource) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(resource));
-            Scene scene = new Scene(root);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerCoursesTabController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+      public String showUpdateDialog() {
+        ArrayList<String> choices = new ArrayList();
+        searchData(ALL_DATA).forEach(x -> choices.add(x.getRegistrationNumber()));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("",choices);
+        dialog.setTitle("Edytowanie pojazdu");
+        dialog.setHeaderText("Aby edytować dane pojazdu w systemie, wybierz go z poniższej listy. \n");
+        dialog.setContentText("Pojazd do modyfikacji: ");
+        Optional<String> optional = dialog.showAndWait();
+        return optional.get();
+        
     }
+      
+    @FXML
+    public void find() {
+        openWindow(SELECT,null);
+    }  
+    
+    @FXML
+    public void refresh() {
+        vehiclesTable.setItems(searchData(ALL_DATA));   
+    }  
 }

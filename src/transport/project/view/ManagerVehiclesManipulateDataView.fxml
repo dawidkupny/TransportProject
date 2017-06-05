@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="302.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesTabEditController">
+<AnchorPane id="AnchorPane" prefHeight="302.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesManipulateDataController">
    <children>
-      <Label layoutX="57.0" layoutY="6.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE POJAZDU" textAlignment="CENTER">
+      <Label fx:id="titleLabel" layoutX="57.0" layoutY="6.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE POJAZDU" textAlignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>
@@ -45,6 +45,6 @@
       </Label>
       <Label layoutX="357.0" layoutY="184.0" text="[kg]" />
       <Label layoutX="355.0" layoutY="224.0" text="[m3]" />
-      <Button layoutX="150.0" layoutY="260.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ POJAZD" />
+      <Button fx:id="executeButton" layoutX="150.0" layoutY="260.0" mnemonicParsing="false" onAction="#execute" text="DODAJ POJAZD" />
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="302.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesTabEditController">
+<AnchorPane id="AnchorPane" prefHeight="302.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesManipulateDataController">
    <children>
       <Label fx:id="titleLabel" layoutX="57.0" layoutY="6.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE POJAZDU" textAlignment="CENTER">
          <font>
