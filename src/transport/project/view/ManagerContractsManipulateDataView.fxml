@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerContractsTabEditController">
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerContractsManipulateDataController">
    <children>
-      <Label layoutX="57.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE UMOWY" textAlignment="CENTER">
+      <Label fx:id="titleLabel" layoutX="57.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE UMOWY" textAlignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>
@@ -46,6 +46,6 @@
          </font>
       </Label>
       <ChoiceBox fx:id="driverField" layoutX="200.0" layoutY="215.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button layoutX="153.0" layoutY="263.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ UMOWĘ" />
+      <Button fx:id="executeButton" layoutX="153.0" layoutY="263.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ UMOWĘ" />
    </children>
 </AnchorPane>

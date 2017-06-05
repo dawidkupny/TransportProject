@@ -14,14 +14,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import transport.project.model.Contract;
+import transport.project.model.Course;
 import transport.project.util.DatabaseToolkit;
 
 public class ManagerContractsTabController implements Initializable {
@@ -51,8 +53,11 @@ public class ManagerContractsTabController implements Initializable {
     private TableColumn contractSalaryColumn;
     
     private DatabaseToolkit databaseToolkit;
-            
-          
+    
+    private final int INSERT = 1; 
+    private final int UPDATE = 2; 
+    private final int SELECT = 3; 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       contractIdColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
@@ -65,7 +70,6 @@ public class ManagerContractsTabController implements Initializable {
       databaseToolkit = DatabaseToolkit.getInstance();
         
       contractsTable.setItems(searchData(ALL_DATA));
-    
     }    
     
     public ObservableList<Contract> searchData(String query) {
@@ -90,6 +94,28 @@ public class ManagerContractsTabController implements Initializable {
         return observableList;
     }
     
+    private void openWindow(int state, Contract contract) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/transport/project/view/ManagerContractsManipulateDataView.fxml"));
+            
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene((Pane) loader.load()));
+            
+            ManagerContractsManipulateDataController controller =
+                    loader.<ManagerContractsManipulateDataController>getController();
+            if(state==UPDATE) controller.initState(state,contract);
+            else controller.initState(state);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerVehiclesTabController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void add() {
+        openWindow(INSERT,null);
+    }
+    
     @FXML
     public void remove() {
        String contractToRemove = showRemoveDialog();
@@ -111,22 +137,38 @@ public class ManagerContractsTabController implements Initializable {
         return optional.get();
         }
     
-    @FXML
-    public void add() {
-        openWindow("/transport/project/view/ManagerContractsTabEditView.fxml");
-        contractsTable.setItems(searchData(ALL_DATA));
-    }
+    
 
-    private void openWindow(String resource) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(resource));
-            Scene scene = new Scene(root);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerCoursesTabController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @FXML
+    public void update() {
+        String contractNumber = showUpdateDialog();
+        if(!contractNumber.equals(""))
+        openWindow(UPDATE,searchData("SELECT c.contract_id, c.contract_number, c.start_date, " +
+                                     "c.expiration_date, c.salary, d.driver_id, d.first_name, d.last_name " +
+                                     "FROM civil_contract c JOIN driver d ON (c.driver_driver_id = d.driver_id) "
+                                   + " WHERE contract_number=\""+contractNumber+"\";").get(0));
+    }
+    
+      public String showUpdateDialog() {
+        ArrayList<String> choices = new ArrayList();
+        searchData(ALL_DATA).forEach(x -> choices.add(x.getContractNumber()));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("",choices);
+        dialog.setTitle("Edytowanie umowy - zlecenie");
+        dialog.setHeaderText("Aby edytować dane umowy w systemie, wybierz ją z poniższej listy. \n");
+        dialog.setContentText("Umowa do modyfikacji: ");
+        Optional<String> optional = dialog.showAndWait();
+        return optional.get();
+        
+    }
+      
+    @FXML
+    public void select() {
+        openWindow(SELECT,null);
+    }  
+    
+    
+    @FXML
+    private void refresh() {
+        contractsTable.setItems(searchData(ALL_DATA));
     }
 }

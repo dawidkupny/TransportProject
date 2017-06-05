@@ -45,7 +45,6 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
     
     private final int MANAGER_ID = 1; 
     
-    
     private final int INSERT = 1; 
     private final int UPDATE = 2; 
     private final int SELECT = 3; 
@@ -143,7 +142,6 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
         if (!cubatureField.getText().equals("")) query.append(" AND cubature = " + cubatureField.getText());
         if (!loadField.getText().equals("")) query.append(" AND carrying_capacity = " + loadField.getText());
         query.append(";");
-        System.out.println(query);
         return query.toString();
     }
     

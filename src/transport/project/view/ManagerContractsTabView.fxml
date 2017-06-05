@@ -30,8 +30,8 @@
                <children>
                               <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" />
                               <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" />
-                              <Button fx:id="editButton" layoutX="70.0" layoutY="415.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
-                              <Button fx:id="searchButton" layoutX="70.0" layoutY="565.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="editButton" layoutX="70.0" layoutY="415.0" mnemonicParsing="false" onAction="#update" prefHeight="120.0" prefWidth="120.0" />
+                              <Button fx:id="searchButton" layoutX="70.0" layoutY="565.0" mnemonicParsing="false" onAction="#select" prefHeight="120.0" prefWidth="120.0" />
                               <Label layoutX="230.0" layoutY="161.0" text="DODAJ">
                                  <font>
                                     <Font size="26.0" />
@@ -52,6 +52,12 @@
                                     <Font size="26.0" />
                                  </font>
                               </Label>
+                  <Button fx:id="refreshButton" layoutX="70.0" layoutY="714.0" mnemonicParsing="false" onAction="#refresh" prefHeight="54.0" prefWidth="120.0" />
+                  <Label layoutX="230.0" layoutY="722.0" text="ODŚWIEŻ">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
