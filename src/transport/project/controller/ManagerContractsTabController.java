@@ -23,7 +23,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import transport.project.model.Contract;
-import transport.project.model.Course;
 import transport.project.util.DatabaseToolkit;
 
 public class ManagerContractsTabController implements Initializable {
@@ -136,9 +135,7 @@ public class ManagerContractsTabController implements Initializable {
         Optional<String> optional = dialog.showAndWait();
         return optional.get();
         }
-    
-    
-
+                
     @FXML
     public void update() {
         String contractNumber = showUpdateDialog();

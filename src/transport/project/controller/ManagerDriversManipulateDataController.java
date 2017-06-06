@@ -17,7 +17,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import transport.project.model.Driver;
-import transport.project.model.Vehicle;
 import transport.project.util.DatabaseToolkit;
 import transport.project.util.ValuesChecker;
 

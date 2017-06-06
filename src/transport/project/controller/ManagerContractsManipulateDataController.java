@@ -92,7 +92,7 @@ public class ManagerContractsManipulateDataController implements Initializable {
             }
             driverField.setItems(drivers);
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerCoursesTabEditController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerCoursesManipulateDataController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
      

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerCoursesTabEditController">
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerCoursesManipulateDataController">
    <children>
-      <Label layoutX="86.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE KURSU" textAlignment="CENTER">
+      <Label fx:id="titleLabel" layoutX="86.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE KURSU" textAlignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>
@@ -60,12 +60,12 @@
       </Label>
       <Label layoutX="355.0" layoutY="264.0" text="[kg]" />
       <Label layoutX="355.0" layoutY="303.0" text="[m3]" />
-      <Label layoutX="25.0" layoutY="340.0" text="Kierowca:" textAlignment="CENTER">
+      <Label fx:id="driverLabel" layoutX="25.0" layoutY="340.0" text="Kierowca:" textAlignment="CENTER">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="driverField" layoutX="200.0" layoutY="337.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button layoutX="162.0" layoutY="403.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ KURS" />
+      <Button fx:id="executeButton" layoutX="162.0" layoutY="403.0" mnemonicParsing="false" onAction="#executeUpdate" text="DODAJ KURS" />
    </children>
 </AnchorPane>

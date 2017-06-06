@@ -14,18 +14,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import transport.project.model.Course;
 import transport.project.util.DatabaseToolkit;
 
 public class ManagerCoursesTabController implements Initializable {
-    final String ALL_DATA = "SELECT c.distance, c.starting_point, c.destination, c.start_date, c.end_date, c.load_weight, c.cubature, c.incineration, " +
+    final String ALL_DATA = "SELECT c.order_id, c.distance, c.starting_point, c.destination, c.start_date, c.end_date, c.load_weight, c.cubature, c.incineration, " +
                             " v.registration_number, v.brand, v.model, " +
                             " d.driver_id, d.first_name, d.last_name " +
                             "FROM transport.`order` c " +
@@ -70,6 +71,9 @@ public class ManagerCoursesTabController implements Initializable {
 
     private DatabaseToolkit databaseToolkit;
 
+    private final int INSERT = 1; 
+    private final int UPDATE = 2; 
+    private final int SELECT = 3; 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,8 +92,6 @@ public class ManagerCoursesTabController implements Initializable {
       databaseToolkit = DatabaseToolkit.getInstance();
 
       ordersTable.setItems(searchData(ALL_DATA));
-
-
     }
 
     public ObservableList<Course> searchData(String query) {
@@ -99,7 +101,7 @@ public class ManagerCoursesTabController implements Initializable {
 
             int counter=0;
             while(resultSet.next()) {
-                observableList.add(new Course(++counter,
+                observableList.add(new Course(resultSet.getInt("c.order_id"),
                         resultSet.getBigDecimal("c.distance"),
                         resultSet.getString("c.starting_point"),
                         resultSet.getString("c.destination"),
@@ -119,8 +121,30 @@ public class ManagerCoursesTabController implements Initializable {
         }
         return observableList;
     }
+    
+    private void openWindow(int state, Course course) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/transport/project/view/ManagerCoursesManipulateDataView.fxml"));
+            
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene((Pane) loader.load()));
+            
+            ManagerCoursesManipulateDataController controller =
+                    loader.<ManagerCoursesManipulateDataController>getController();
+            if(state==UPDATE) controller.initState(state,course);
+            else controller.initState(state);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerVehiclesTabController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void add() {
+       openWindow(INSERT,null);
+    }
 
-     @FXML
+    @FXML
     public void remove() {
        String orderToRemove = showRemoveDialog().split(":")[0];
        if(!orderToRemove.equals("")) {
@@ -141,25 +165,38 @@ public class ManagerCoursesTabController implements Initializable {
         Optional<String> optional = dialog.showAndWait();
         return optional.get();
         }
+
+    @FXML
+    public void update() {
+        String courseId = showUpdateDialog();
+        if(!courseId.equals(""))
+        openWindow(UPDATE,searchData("SELECT c.order_id, c.distance, c.starting_point, c.destination, c.start_date, c.end_date, c.load_weight, c.cubature, c.incineration, " +
+                                     " v.registration_number, v.brand, v.model, " +
+                                     " d.driver_id, d.first_name, d.last_name " +
+                                     "FROM transport.`order` c " +
+                                     "JOIN transport.`vehicle` v ON (c.vehicle_registration_id = v.registration_id) " +
+                                     "JOIN transport.`driver` d ON (c.driver_driver_id = d.driver_id)" +
+                                     " WHERE order_id="+courseId+";").get(0));
+    }
+    
+      public String showUpdateDialog() {
+        ArrayList<String> choices = new ArrayList();
+        searchData(ALL_DATA).forEach(x -> choices.add(x.getNumber()+": "+x.getStartingPoint()+"->"+x.getDestination()));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("",choices);
+        dialog.setTitle("Edytowanie kursu");
+        dialog.setHeaderText("Aby edytować dane kursu w systemie, wybierz go z poniższej listy. \n");
+        dialog.setContentText("Kurs do modyfikacji: ");
+        Optional<String> optional = dialog.showAndWait();
+        return optional.get().split(":")[0];
+    }
+      
+    @FXML
+    public void select() {
+        openWindow(SELECT,null);
+    }  
     
     @FXML
-    public void add() {
-        openWindow("/transport/project/view/ManagerCoursesTabEditView.fxml");
+    private void refresh() {
         ordersTable.setItems(searchData(ALL_DATA));
     }
-
-    private void openWindow(String resource) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(resource));
-            Scene scene = new Scene(root);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerCoursesTabController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    
 }
