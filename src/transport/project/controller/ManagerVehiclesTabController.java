@@ -83,7 +83,7 @@ public class ManagerVehiclesTabController implements Initializable {
             while(resultSet.next()) {
                 observableList.add(new Vehicle(++counter,
                         resultSet.getString("registration_number"),
-                        ((resultSet.getInt("vehicle_availibilty")==1) ? "DOSTĘPNY" : "NIEDOSTĘPNY"),
+                        ((resultSet.getInt("vehicle_availibilty")==1) ? "NIEUŻYWANY" : "UŻYWANY"),
                         resultSet.getString("brand"),
                         resultSet.getString("model"),
                         resultSet.getBigDecimal("carrying_capacity"),

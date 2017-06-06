@@ -126,8 +126,26 @@ public class ManagerCoursesManipulateDataController implements Initializable {
     
     
     public String chooseVehicle() {
-        return 2+"";
-        //implement algorithm
+        try {
+            String query = "SELECT registration_id FROM `vehicle` " +
+                    " WHERE carrying_capacity>" + loadField.getText() +
+                    " AND cubature>" + cubatureField.getText() +
+                    " ORDER BY carrying_capacity ASC, cubature ASC " +
+                    " LIMIT 1;";
+            ResultSet resultSet = DatabaseToolkit.getInstance().executeQuery(query);
+            if(!resultSet.next()) {
+                ValuesChecker.printError("Brak odpowiedniego pojazdu");
+                return "-1";
+            }
+            else {String registrationId = resultSet.getString("registration_id");
+                  query = "UPDATE `vehicle` SET vehicle_availibilty=0 WHERE registration_id="+registrationId+";";
+                  DatabaseToolkit.getInstance().executeUpdate(query);
+                  return registrationId;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerCoursesManipulateDataController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return "-1";
     }
             
     public boolean checkData() {

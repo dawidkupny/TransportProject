@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DatePicker;
 
 public class ValuesChecker {
 
@@ -41,8 +42,13 @@ public class ValuesChecker {
        return result;
     }
     
-    public static boolean checkDriverAvailibility(String fieldType, String choice) {
-      // jakie zapytanie?
+    public static boolean checkDriverAvailibility(String fieldType, String choice, DatePicker start, DatePicker end) {
+//      String query = "SELECT d.first_name, d.last_name "
+//                    + "FROM driver d "
+//                    + "JOIN civil_contract c ON (c.driver_driver_id = d.driver_id) "
+//                    + "WHERE c.start_date>" + start.getValue()
+//                    + " AND c.expiration_date<" + end.getValue()
+//                    + " ;";
         return true;
     }
     
