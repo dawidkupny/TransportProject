@@ -7,56 +7,156 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverStatisticTabController">
+<VBox prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverStatisticTabController">
    <children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <AreaChart HBox.hgrow="ALWAYS">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </AreaChart>
-            <LineChart maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="210.0" prefWidth="273.0" HBox.hgrow="ALWAYS">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
+            <VBox prefHeight="200.0" prefWidth="330.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Największe wynagrodzenie:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="maxSalaryLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" text="Najmniejsze wynagrodzenie:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="minSalaryLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="119.0" prefHeight="100.0" prefWidth="160.0" text="Najdłuższa umowa:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="maxContractLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="120.0" prefHeight="100.0" prefWidth="160.0" text="Najkrótsza umowa:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="minContractLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator disable="true" orientation="VERTICAL" prefHeight="200.0" />
+            <VBox prefHeight="200.0" prefWidth="330.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Całkowita ilość umów:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="allContractsLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" text="Ilość umów w obecnym roku:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="thisYearContractsLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="175.0" prefHeight="100.0" prefWidth="160.0" text="Ilość umów w ubiegłym roku:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lastYearContractsLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" prefHeight="100.0" prefWidth="160.0" text="Całkowita ilość odbytych tras:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="allOrdersLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator disable="true" orientation="VERTICAL" prefHeight="200.0" />
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="210.0" prefWidth="458.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="150.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="187.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Id:" HBox.hgrow="ALWAYS">
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="37.0" prefWidth="0.0" text="Id pracownika:" HBox.hgrow="ALWAYS">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="idLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="idLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="80.0" wrapText="true" HBox.hgrow="ALWAYS">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
-                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="179.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pracuje od:" HBox.hgrow="ALWAYS">
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="38.0" prefWidth="0.0" text="Pracuje od:" HBox.hgrow="ALWAYS">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="hireDateLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="hireDateLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="80.0" wrapText="true" HBox.hgrow="ALWAYS">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="379.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="37.0" prefWidth="0.0" text="Imię:" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="firstNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="80.0" wrapText="true" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="379.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" prefHeight="38.0" prefWidth="0.0" text="Nazwisko:" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lastNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="80.0" wrapText="true" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -70,58 +170,114 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Imię:" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="firstNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nazwisko:" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lastNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
+      <Separator prefWidth="200.0" />
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <BarChart>
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-            <ScatterChart>
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </ScatterChart>
-            <PieChart />
-         </children>
-      </HBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="330.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Ilość tras w obecnym roku:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="thisYearOrdersLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Ilość tras w ubiegłym roku:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lastYearOrdersLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" text="Całkowity przejechany dystans:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="totalDistanceLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="200.0" />
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="330.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Najdłuższa trasa:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="longestDistanceLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Najkrótsza trasa:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="shortestDistanceLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" prefHeight="100.0" prefWidth="160.0" text="Najcześciej odwiedzana miejscowość:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="mostVisitedCityLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="200.0" />
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="330.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" prefHeight="100.0" prefWidth="160.0" text="Najczęsciej prowadzona ciężarówka:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="mostDrivingVehicleLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="100.0" prefWidth="160.0" text="Największy wieziony ładunek:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="largestLoadLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" text="Najmniejszy wieziony ładunek:" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="smallestLoadLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></HBox>
    </children>
 </VBox>

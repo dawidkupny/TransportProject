@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,10 +27,10 @@ public class ManagerDriversManipulateDataController implements Initializable {
 
     @FXML
     private Label titleLabel, label1, label2, label3, label4;
-    
-    @FXML 
+
+    @FXML
     private Button executeButton;
-    
+
     @FXML
     private TextField firstNameField;
 
@@ -48,18 +51,18 @@ public class ManagerDriversManipulateDataController implements Initializable {
 
     @FXML
     private PasswordField passwordField2;
-    
-    private final int INSERT = 1; 
-    private final int UPDATE = 2; 
-    private final int SELECT = 3; 
-    
+
+    private final int INSERT = 1;
+    private final int UPDATE = 2;
+    private final int SELECT = 3;
+
     private int state;
-    
+
     private Driver driver;
 
     void initState(int state) {
     this.state = state;
-    if(state==SELECT){ 
+    if(state==SELECT){
          titleLabel.setText("WYSZUKIWANIE");
          executeButton.setText("WYSZUKAJ");
          usernameField.setVisible(false);
@@ -72,7 +75,7 @@ public class ManagerDriversManipulateDataController implements Initializable {
          label4.setVisible(false);
      }
     }
-    
+
     public void initState(int state, Driver driver) {
     this.state = state;
     this.driver = driver;
@@ -92,11 +95,11 @@ public class ManagerDriversManipulateDataController implements Initializable {
          executeButton.setText("ZAPISZ OPIS");
       }
     }
-   
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }   
-    
+    }
+
     @FXML
     void executeUpdate(ActionEvent event) {
       if(state==INSERT)
@@ -109,30 +112,30 @@ public class ManagerDriversManipulateDataController implements Initializable {
       if(state==SELECT)
           selectDriver();
     }
-    
+
     public boolean checkUserData() {
         return ( ValuesChecker.checkUnique("Unikalność nazwy użytkownika", "user", "username", "\""+usernameField.getText()+"\"")
                 && ValuesChecker.checkEmail("E-mail", emailField.getText())
-                && ValuesChecker.checkPassword("Hasło", passwordField.getText(), passwordField2.getText())                
+                && ValuesChecker.checkPassword("Hasło", passwordField.getText(), passwordField2.getText())
                 );
     }
-    
+
     public boolean checkDriverData() {
         return ( ValuesChecker.checkString("Imię", firstNameField.getText())
                 && ValuesChecker.checkString("Nazwisko", lastNameField.getText())
                 && ValuesChecker.checkDate("Data zatrudnienia", hireDateField.getValue()));
     }
-    
+
     public void addUser() {
          String query = "INSERT INTO `user` (username, email, password)"
                 + " VALUES (\""
-                 +usernameField.getText() + "\",\"" 
+                 +usernameField.getText() + "\",\""
                  +emailField.getText() + "\",\""
-                 +passwordField.getText() //SZYFROWANIE!!!!
+                 +BCrypt.hashpw(passwordField.getText(), BCrypt.gensalt())
                  +"\");";
          DatabaseToolkit.getInstance().executeUpdate(query);
     }
-    
+
     public String getUserId() {
         try {
             String query = "SELECT user_id FROM user WHERE username=\""+usernameField.getText()+"\";";
@@ -144,11 +147,11 @@ public class ManagerDriversManipulateDataController implements Initializable {
         }
         return null;
     }
-    
+
     public void addDriver(String userId) {
          String query = "INSERT INTO `driver` (first_name, last_name, hire_date, user_user_id)"
                 + " VALUES (\""
-                 +firstNameField.getText() + "\",\"" 
+                 +firstNameField.getText() + "\",\""
                  +lastNameField.getText() + "\",\'"
                  +hireDateField.getValue() + "\',"
                  +userId + ");";
@@ -161,7 +164,7 @@ public class ManagerDriversManipulateDataController implements Initializable {
    String query = "UPDATE `driver` SET "
                 + "first_name = \"" + firstNameField.getText() + "\", "
                 + "last_name = \"" + lastNameField.getText() + "\", "
-                + "hire_date = \'" + hireDateField.getValue() + "\' " 
+                + "hire_date = \'" + hireDateField.getValue() + "\' "
                 + "WHERE driver_id = " + driver.getNumber() +";";
    System.out.println(query);
         DatabaseToolkit.getInstance().executeUpdate(query);
@@ -174,7 +177,7 @@ public class ManagerDriversManipulateDataController implements Initializable {
         ResultSet resultSet = DatabaseToolkit.getInstance().executeQuery(query);
         showResults(resultSet);
     }
-    
+
     private String prepareQuery() {
         StringBuilder query = new StringBuilder("SELECT * FROM `driver` WHERE 1=1");
         if (!firstNameField.getText().equals("")) query.append(" AND first_name = \"" + firstNameField.getText()+"\" ");
@@ -183,19 +186,19 @@ public class ManagerDriversManipulateDataController implements Initializable {
          query.append(";");
         return query.toString();
     }
-    
+
     private void showResults(ResultSet resultSet) {
         StringBuilder formattedResult = new StringBuilder(String.format("%25s  %25s  %10s\n",
                     "IMIĘ", "NAZWISKO", "DATA ZATR."));
-        
+
         try {
-            while(resultSet.next()) { 
+            while(resultSet.next()) {
                 formattedResult.append(String.format("%25s  %25s  %10s\n",
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
                         resultSet.getDate("hire_date").toString()
                 ));
-               }   
+               }
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
           alert.setTitle("Wyniki wyszukiwania");
           alert.setHeaderText("Na podstawie Twoich warunków wyszukano następujące pozycje: ");

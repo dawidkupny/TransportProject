@@ -29,11 +29,9 @@ import transport.project.util.DatabaseToolkit;
 public class DriverCoursesTabController implements Initializable {
 
 	private static final String ALL_RESULT = "SELECT o.distance, o.starting_point, o.destination, o.start_date, o.end_date, o.load_weight, o.cubature, o.incineration, " +
-							"v.registration_number, v.brand, v.model, " +
-                            "d.first_name, d.last_name " +
+							"v.registration_number, v.brand, v.model " +
                             "FROM transport.order o " +
-                            "JOIN transport.vehicle v ON (o.vehicle_registration_id = v.registration_id) " +
-                            "JOIN transport.driver d ON (o.driver_driver_id = d.driver_id)";
+                            "JOIN transport.vehicle v ON (o.vehicle_registration_id = v.registration_id) WHERE driver_driver_id = ";
 	@FXML
     private TableView<Course> courseTable;
 
@@ -60,9 +58,6 @@ public class DriverCoursesTabController implements Initializable {
 
     @FXML
     private TableColumn<Course, Date> endDateColumn;
-
-    @FXML
-    private TableColumn<Course, String> driverColumn;
 
     @FXML
     private TextField searchTextField;
@@ -104,7 +99,7 @@ public class DriverCoursesTabController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dataBaseSearch(ALL_RESULT);
+		dataBaseSearch(ALL_RESULT+MainController.getUserId());
 		searchComboBox.setItems(criteria);
 
 		searchComboBox.valueProperty().addListener(new ChangeListener<String>() {
@@ -132,7 +127,7 @@ public class DriverCoursesTabController implements Initializable {
 					if(userValue.equals("")) {
 						warningLabel.setText("Uzupelnij brakujace pola.");
 					} else
-						dataBaseSearchWithParameter(ALL_RESULT, parameter, userValue);
+						dataBaseSearchWithParameter(ALL_RESULT+MainController.getUserId(), parameter, userValue);
 				}
 				catch (NullPointerException e){
 					warningLabel.setText("Wybierz kryterium wyszukiwania.");
@@ -175,9 +170,7 @@ public class DriverCoursesTabController implements Initializable {
 						resultSet.getBigDecimal("cubature"),
 						resultSet.getBigDecimal("incineration"),
 						(resultSet.getString("v.registration_number") + " : " + (resultSet.getString("v.brand"))
-                                + " " + (resultSet.getString("v.model"))),
-                        (resultSet.getString("d.first_name")
-                                + " " + resultSet.getString("d.last_name"))
+                                + " " + (resultSet.getString("v.model"))),""
 						));
 			}
 		} catch (SQLException e) {
@@ -192,7 +185,6 @@ public class DriverCoursesTabController implements Initializable {
 		loadWeightColumn.setCellValueFactory(new PropertyValueFactory<>("loadWeight"));
 		cubatureColumn.setCellValueFactory(new PropertyValueFactory<>("cubature"));
 		incinerationColumn.setCellValueFactory(new PropertyValueFactory<>("incineration"));
-		driverColumn.setCellValueFactory(new PropertyValueFactory<>("driverToString"));
 		vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleToString"));
 
 		return data;

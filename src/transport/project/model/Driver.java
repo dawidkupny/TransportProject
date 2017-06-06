@@ -46,7 +46,7 @@ public class Driver {
         this.lastName = lastName;
         this.hireDate = hireDate;
     }
-  
+
     @Override
     public String toString() {
         return this.firstName+" "+this.lastName;

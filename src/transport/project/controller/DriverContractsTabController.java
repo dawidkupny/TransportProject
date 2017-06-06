@@ -28,7 +28,7 @@ import transport.project.util.DatabaseToolkit;
 
 public class DriverContractsTabController implements Initializable{
 
-	private final String ALL_RESULT = "SELECT contract_number, start_date, expiration_date, salary FROM transport.civil_contract";
+	private final String ALL_RESULT = "SELECT contract_number, start_date, expiration_date, salary FROM transport.civil_contract WHERE driver_driver_id = ";
 
     @FXML
     private Button searchButton;
@@ -79,7 +79,6 @@ public class DriverContractsTabController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		dataBaseSearch(ALL_RESULT);
 		searchComboBox.setItems(criteria);
-
 		searchComboBox.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -114,14 +113,14 @@ public class DriverContractsTabController implements Initializable{
 	}
 
 	private void dataBaseSearch(String query) {
-		resultSet = dbToolkit.executeQuery(query);
+		resultSet = dbToolkit.executeQuery(query+MainController.getUserId());
 		data = search(resultSet, data);
 		dbToolkit.disconnect();
 		contractTable.setItems(data);
 	}
 
 	private void dataBaseSearchWithParameter(String query, String parameter, String userValue) {
-		resultSet = dbToolkit.executeQuery(query+" WHERE "+parameter+" = '"+userValue+"';");
+		resultSet = dbToolkit.executeQuery(query+MainController.getUserId()+" AND "+parameter+" = '"+userValue+"';");
 		data = search(resultSet, data);
 		dbToolkit.disconnect();
 		if(data.isEmpty()) {

@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Contract {
 	private Integer number;
 	private String contractNumber;
-        private String driverToString;
+    private String driverToString;
 	private Date startDate;
 	private Date expirationDate;
 	private BigDecimal salary;
@@ -27,15 +27,15 @@ public class Contract {
 		this.contractNumber = contractNumber;
 	}
 
-        public String getDriverToString() {
-                return driverToString;
-        }
+    public String getDriverToString() {
+            return driverToString;
+    }
 
-        public void setDriverToString(String driverToString) {
-                this.driverToString = driverToString;
-        }
+    public void setDriverToString(String driverToString) {
+            this.driverToString = driverToString;
+    }
 
-        
+
 	public Date getStartDate() {
 		return startDate;
 	}

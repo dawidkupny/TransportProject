@@ -22,10 +22,10 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
 
     @FXML
     private Label titleLabel;
-    
+
     @FXML
     private Button executeButton;
-    
+
     @FXML
     private TextField registrationNumberField;
 
@@ -40,27 +40,27 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
 
     @FXML
     private TextField cubatureField;
-    
-    private final int VEHICLE_AVAILIBLE = 1; 
-    
-    private final int MANAGER_ID = 1; 
-    
-    private final int INSERT = 1; 
-    private final int UPDATE = 2; 
-    private final int SELECT = 3; 
-    
+
+    private final int VEHICLE_AVAILIBLE = 1;
+
+    private final int MANAGER_ID = 1;
+
+    private final int INSERT = 1;
+    private final int UPDATE = 2;
+    private final int SELECT = 3;
+
     private int state;
-    
+
     private Vehicle vehicle;
 
     void initState(int state) {
     this.state = state;
-    if(state==SELECT){ 
+    if(state==SELECT){
          titleLabel.setText("WYSZUKIWANIE");
          executeButton.setText("WYSZUKAJ");
      }
     }
-    
+
     public void initState(int state, Vehicle vehicle) {
     this.state = state;
     this.vehicle = vehicle;
@@ -77,13 +77,13 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) { 
-    }  
-       
+    public void initialize(URL url, ResourceBundle rb) {
+    }
+
     @FXML
     void execute() {
       if(state==INSERT)
-          if( ValuesChecker.checkUnique("Unikalność identyfikatora","vehicle","registration_number","\""+registrationNumberField.getText()+"\"")       
+          if( ValuesChecker.checkUnique("Unikalność identyfikatora","vehicle","registration_number","\""+registrationNumberField.getText()+"\"")
                && checkData()) addVehicle();
       if(state==UPDATE) {
           if (checkData()) updateVehicle();}
@@ -95,9 +95,9 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
           && ValuesChecker.checkString("Marka", brandField.getText())
           && ValuesChecker.checkString("Model", modelField.getText())
           && ValuesChecker.checkDecimal("Ładowność", loadField.getText())
-          && ValuesChecker.checkDecimal("Kubatura", cubatureField.getText()));          
+          && ValuesChecker.checkDecimal("Kubatura", cubatureField.getText()));
     }
-    
+
     public void addVehicle() {
         String query = "INSERT INTO `vehicle` (registration_number, vehicle_availibilty, brand, model, carrying_capacity, "
                 + " cubature, user_user_id)"
@@ -130,9 +130,9 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
         String query = prepareQuery();
         ResultSet resultSet = DatabaseToolkit.getInstance().executeQuery(query);
         showResults(resultSet);
-        
+
     }
-    
+
     private String prepareQuery() {
         StringBuilder query = new StringBuilder("SELECT * FROM `vehicle` WHERE 1=1");
         if (!registrationNumberField.getText().equals("")) query.append(" AND registration_number = \"" + registrationNumberField.getText()+"\" ");
@@ -143,13 +143,13 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
         query.append(";");
         return query.toString();
     }
-    
+
     private void showResults(ResultSet resultSet) {
         StringBuilder formattedResult = new StringBuilder(String.format("%20s  %13s  %10s  %15s  %8s  %8s\n",
                     "NUMER REJESTRACYJNY", "DOSTĘPNOŚĆ", "MARKA", "MODEL", "ŁADOWNOŚĆ", "KUBATURA"));
-        
+
         try {
-            while(resultSet.next()) { 
+            while(resultSet.next()) {
                 formattedResult.append(String.format("%20s  %13s  %10s  %15s  %8s  %8s\n",
                         resultSet.getString("registration_number"),
                         ((resultSet.getInt("vehicle_availibilty")==1) ? "DOSTĘPNY" : "NIEDOSTĘPNY"),
@@ -158,7 +158,7 @@ public class ManagerVehiclesManipulateDataController implements Initializable {
                         resultSet.getBigDecimal("carrying_capacity").setScale(2).toPlainString(),
                         resultSet.getBigDecimal("cubature").setScale(2).toPlainString()
                 ));
-               }   
+               }
           Alert alert = new Alert(AlertType.INFORMATION);
           alert.setTitle("Wyniki wyszukiwania");
           alert.setHeaderText("Na podstawie Twoich warunków wyszukano następujące pozycje: ");

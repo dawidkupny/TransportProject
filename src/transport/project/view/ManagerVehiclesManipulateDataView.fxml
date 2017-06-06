@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="302.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerVehiclesManipulateDataController">
    <children>
-      <Label fx:id="titleLabel" layoutX="57.0" layoutY="6.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE KIEROWCY" textAlignment="CENTER">
+      <Label fx:id="titleLabel" layoutX="57.0" layoutY="6.0" prefHeight="38.0" prefWidth="296.0" text="DODAWANIE POJAZDU" textAlignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>

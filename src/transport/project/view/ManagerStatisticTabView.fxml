@@ -1,11 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerStatisticsTabController">
-    
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerStatisticsTabController">
+   <children>
+      <VBox layoutX="200.0" layoutY="90.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="1270.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="1270.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="390.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="93.0" prefWidth="195.0" text="Najdłużej pracujący kierowca:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="longestWorkingDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="195.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="210.0" prefHeight="115.0" prefWidth="223.0" text="Kierowca z najwiekszą ilością umów:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="greatestContractsDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="210.0" prefHeight="93.0" prefWidth="54.0" text="Kierowca z najmniejszą ilością umów:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="smallestContractsDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="190.0" prefHeight="93.0" prefWidth="24.0" text="Kierowca z największą ilością tras:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="greatestOdersDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="210.0" prefHeight="93.0" prefWidth="69.0" text="Kierowca z najemniejszą ilością tras:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="smallestOrdersDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="10.0" prefHeight="93.0" prefWidth="0.0" text="Najdłuższa trasa:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="longestDistanceOrderLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="1270.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="93.0" prefWidth="0.0" text="Najlepiej zarabiający kierowca:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="highestSalaryDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="93.0" prefWidth="0.0" text="Najmniej zarabiający kierowca:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="lowestSalaryDriverLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="230.0" prefHeight="93.0" prefWidth="89.0" text="Ciężarówka z największym przebiegiem:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="largestMileageVehicleLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="250.0" prefHeight="93.0" prefWidth="119.0" text="Ciężarówka z najmniejszym przebiegiem:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="lowestMileageVehicleLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="210.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="390.0">
+                     <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="250.0" prefHeight="93.0" prefWidth="111.0" text="Największa ilość spalonego paliwa w trasie:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="largestIncinerationOrdersLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="260.0" prefHeight="93.0" prefWidth="134.0" text="Najmniejsza ilość spalonego paliwa w trasie:" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="lowestIncinerationOrdersLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

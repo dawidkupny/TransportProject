@@ -12,9 +12,6 @@ public class DriverMenuMainController implements Initializable{
 	private DriverStatisticTabController driverStatisticTabController;
 
 	@FXML
-	private DriverMessagesTabController driverMessagesTabController;
-
-	@FXML
 	private DriverContractsTabController driverContractsTabController;
 
 	@FXML
@@ -23,5 +20,4 @@ public class DriverMenuMainController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-
 }

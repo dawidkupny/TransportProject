@@ -7,13 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class TransportProject extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/transport/project/view/MainView.fxml"));
-       
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
@@ -22,5 +22,5 @@ public class TransportProject extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

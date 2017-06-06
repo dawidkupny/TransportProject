@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<HBox prefHeight="500.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverCoursesTabController">
+<HBox prefHeight="500.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.DriverCoursesTabController">
    <children>
-      <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="500.0" prefWidth="1195.0" HBox.hgrow="NEVER">
+      <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="500.0" prefWidth="1090.0" HBox.hgrow="NEVER">
         <columns>
           <TableColumn fx:id="numberColumn" prefWidth="22.0" text="#" />
           <TableColumn fx:id="distanceColumn" maxWidth="1.7976931348623157E308" prefWidth="83.0" text="Dystans (km)" />
@@ -20,8 +20,7 @@
             <TableColumn fx:id="loadWeightColumn" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="Masa ładunku (kg)" />
             <TableColumn fx:id="cubatureColumn" maxWidth="1.7976931348623157E308" prefWidth="132.0" text="Rozmiar naczepy (m3)" />
             <TableColumn fx:id="incinerationColumn" maxWidth="1.7976931348623157E308" prefWidth="118.0" text="Il. zużyt. benzyny (l)" />
-            <TableColumn fx:id="driverColumn" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Kierowca" />
-            <TableColumn fx:id="vehicleColumn" maxWidth="1.7976931348623157E308" minWidth="9.0" prefWidth="155.0" text="Ciężarówka" />
+            <TableColumn fx:id="vehicleColumn" maxWidth="1.7976931348623157E308" minWidth="9.0" prefWidth="170.0" text="Ciężarówka" />
         </columns>
       </TableView>
       <VBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" HBox.hgrow="ALWAYS">

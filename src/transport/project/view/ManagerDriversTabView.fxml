@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerDriversTabController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.project.controller.ManagerDriversTabController">
     <children>
       <HBox prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,32 +29,32 @@
                         </TableView>
             <AnchorPane prefHeight="768.0" prefWidth="420.0">
                <children>
-                              <Button fx:id="addButton" layoutX="70.0" layoutY="115.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" />
-                              <Label layoutX="230.0" layoutY="161.0" text="DODAJ">
+                              <Button id="add-button" fx:id="addButton" layoutX="70.0" layoutY="61.0" mnemonicParsing="false" onAction="#add" prefHeight="120.0" prefWidth="120.0" AnchorPane.topAnchor="25.0" />
+                              <Label layoutX="230.0" layoutY="102.0" text="DODAJ" AnchorPane.topAnchor="66.0">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="removeButton" layoutX="70.0" layoutY="265.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" />
-                              <Label layoutX="230.0" layoutY="299.0" text="USUŃ">
+                              <Button id="delete-button" fx:id="removeButton" layoutX="70.0" layoutY="211.0" mnemonicParsing="false" onAction="#remove" prefHeight="120.0" prefWidth="120.0" AnchorPane.topAnchor="175.0" />
+                              <Label layoutX="230.0" layoutY="252.0" text="USUŃ" AnchorPane.topAnchor="216.0">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="230.0" layoutY="461.0" text="ZMIEŃ">
+                              <Label layoutX="230.0" layoutY="402.0" text="ZMIEŃ" AnchorPane.topAnchor="366.0">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="searchButton" layoutX="70.0" layoutY="565.0" mnemonicParsing="false" onAction="#select" prefHeight="120.0" prefWidth="120.0" />
-                              <Label layoutX="230.0" layoutY="607.0" text="SZUKAJ">
+                              <Button id="searching-button" fx:id="searchButton" layoutX="70.0" layoutY="511.0" mnemonicParsing="false" onAction="#select" prefHeight="120.0" prefWidth="120.0" AnchorPane.topAnchor="475.0" />
+                              <Label layoutX="230.0" layoutY="552.0" text="SZUKAJ" AnchorPane.topAnchor="516.0">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="editButton" layoutX="70.0" layoutY="415.0" mnemonicParsing="false" onAction="#update" prefHeight="120.0" prefWidth="120.0" />
-                  <Button fx:id="refreshButton" layoutX="70.0" layoutY="714.0" mnemonicParsing="false" onAction="#refresh" prefHeight="54.0" prefWidth="120.0" />
-                  <Label layoutX="230.0" layoutY="722.0" text="ODŚWIEŻ">
+                              <Button id="edit-button" fx:id="editButton" layoutX="70.0" layoutY="361.0" mnemonicParsing="false" onAction="#update" prefHeight="120.0" prefWidth="120.0" AnchorPane.topAnchor="325.0" />
+                  <Button id="refresh-button" fx:id="refreshButton" layoutX="70.0" layoutY="660.0" mnemonicParsing="false" onAction="#refresh" prefHeight="54.0" prefWidth="120.0" AnchorPane.topAnchor="625.0" />
+                  <Label layoutX="230.0" layoutY="668.0" text="ODŚWIEŻ" AnchorPane.topAnchor="633.0">
                      <font>
                         <Font size="26.0" />
                      </font>
